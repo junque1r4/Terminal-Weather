@@ -1,3 +1,4 @@
 # .gitignore
 
 API_KEY.py
+__pycache__

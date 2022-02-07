@@ -14,6 +14,7 @@ console = Console()
 
 
 def read_user_args() -> argparse.Namespace:
+# TODO: Put some color in the -h --help
     parser = argparse.ArgumentParser(
         description="Get weather and temperature information for a city!"
     )
@@ -36,6 +37,7 @@ def get_weather_data(query_url: str) -> dict:
     with console.status("[bold green]Loading data...", spinner="earth"):
         try:
             response = request.urlopen(query_url)
+# TODO: Put some color in the error handling
         except error.HTTPError as http_error:
             if http_error.code == 404:
                 sys.exit("Can't find weather data for this place.")
@@ -58,13 +60,16 @@ def show_weather_data(data_in_json: dict) -> None:
     wind_speed = data_in_json["wind"]["speed"]
 
     prnt(f"[bold white]:heavy_check_mark:[bold yellow] {city}", end=" ")
+# TODO: Emoticon change deppending on the description
     prnt(f":cloud:[bold white] {description.capitalize()}", end=" ")
+# TODO: Temperature color change deppending on the temperature
     prnt(f":thermometer:[bold cyan] {temperature}°C", end=" ")
     prnt(f":dash:[bold green] {wind_speed} Km/h")
 
 
 def main() -> None:
-    user_args = read_user_args()
+# TODO: Implement some parsing for the user output, security first!
+    user_args = read_user_args() 
     query_url = weather_query(user_args.city)
     weather_data = get_weather_data(query_url)
 
@@ -76,9 +81,4 @@ if __name__ == "__main__":
 
 
 """              TODOLIST            """
-# TODO: Implement some parsing for the user output, security first!
-# TODO: Emoticon change deppending on the description
-# TODO: Temperature color change deppending on the temperature
 # TODO: Build executable zip application with zipapp
-# TODO: Put some color in the error handling
-# TODO: Put some color in the -h --help

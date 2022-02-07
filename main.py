@@ -82,3 +82,4 @@ if __name__ == "__main__":
 
 """              TODOLIST            """
 # TODO: Build executable zip application with zipapp
+# TODO: Some git tutorial for friend
